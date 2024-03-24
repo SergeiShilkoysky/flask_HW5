@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ super() }} - {{ title }}
+<title>Список пользователей</title>
+{% endblock %}
+
+
+{% block content %}
+<h3>Список пользователей</h3>
+<div style="display: flex; justify-content: left; align-items: center; margin-top: 30px;">
+
+
+    <table style="border-collapse: collapse">
+        <tr>
+            <td style="border: 3px solid gray; padding: 10px">id</td>
+            <td style="border: 3px solid gray; padding: 5px">name</td>
+            <td style="border: 3px solid gray; padding: 5px">email</td>
+            <td style="border: 3px solid gray; padding: 5px">pass</td>
+        </tr>
+        {% for user in lst_users %}
+        <tr>
+            <td style="border: 3px solid gray; padding: 10px">{{ user.id }}</td>
+            <td style="border: 3px solid gray; padding: 10px">{{ user.name }}</td>
+            <td style="border: 3px solid gray; padding: 10px">{{ user.email }}</td>
+            <td style="border: 3px solid gray; padding: 10px">{{ user.password }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</div>
+
+<form action="http://127.0.0.1:8080/docs" method="post">
+    <button type="submit" class="btn btn-primary">создать пользователя</button>
+</form>
+
+{% endblock %}
